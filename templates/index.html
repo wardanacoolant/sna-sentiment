@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Sebaran Lokasi Pengguna Twitter Berdasarkan Sentimen Terhadap Opini Pemindahan Ibukota Republik Indonesia</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="static/css/index.css">
+
+
+</head>
+
+<body>
+  <div class="content">
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#Twitter">Twitter</a></li>
+        <li><a data-toggle="tab" href="#Background">Background</a></li>
+        <li><a data-toggle="tab" href="#Methods">Methods</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="Twitter" class="tab-pane fade in active">
+          <div class="webwidth">
+            <h3 id="head"><img src="Twitter.png" alt="" width="300" height="150" align="top">Sebaran Lokasi Pengguna
+              Twitter Berdasarkan Sentimen Terhadap Opini Pemindahan Ibukota Republik Indonesia</h3>
+
+              <p> 481 tweet dengan topik "Ibukota pindah" dan "ibukota baru" yang diambil secara scrap dari Twitter, pengambilan data dilakukan dari Juni hingga
+                December, 2019 menggunakan twitterscraper.
+                Terkait dengan ini, ~ berisi 3469 retweets dan 1159 replies dihitung saat pengambilan data.</p>
+            <p></p>
+
+            <h4>Cek Sentimen</h4>
+            <form action="{{ url_for('predict')}}" method="POST">
+              <p>Enter Your Message Here</p>
+              <!-- <input type="text" name="comment"/> -->
+              <textarea name="message" rows="4" cols="50"></textarea>
+              <br />
+
+              <input type="submit" class="btn-info" value="predict">
+              <div class="row">
+                <div class="col-md-4">
+                  <h4>Point</h4>
+                  <iframe class="map", src="/get_point" width="400" height="500"></iframe>
+                </div>
+                <div class="col-md-4">
+                <h4>Cluster Map</h4>
+                <iframe class="map", src="/get_map" width="400" height="500"></iframe>
+                </div>
+                <div class="col-md-4">
+                <h4>HeatMap (Positive) </h4>
+                <iframe class="map", src="/get_positive" width="400" height="500"></iframe>
+                </div>
+                <div class="col-md-4">
+                <h4>HeatMap (Negative) </h4>
+                <iframe class="map", src="/get_negative" width="400" height="500"></iframe>
+                </div>
+                <div class="col-md-4">
+                <h4>HeatMap (Netral) </h4>
+                <iframe class="map", src="/get_heat" width="400" height="500"></iframe>
+              </div>
+              </div>
+
+              <h4>Sentiment</h4>
+              <div class="row">
+                <div class="col-md-3" style="width: 400px;height: 400px">
+                  <canvas id="doughnut-chart"></canvas>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6" style="width: 500px;height: 500px">
+                  <canvas id="doughnut-chart-1"></canvas>
+                </div>
+                <div class="col-md-6" style="width: 500px;height: 500px">
+                  <canvas id="doughnut-chart-2"></canvas>
+                </div>
+              </div>
+
+              <!--<h3 class="head">High frequency words, hashtag, reffered IDs, and bigrams</h3>-->
+
+              <h4>Most retweeted tweets</h4>
+              <div class="box">
+                <ol class="table">
+                  <li> 1154 times: “Jokowi Sudah Putuskan,Ibu Kota Baru Di KalTim”. Benarkah? Pdhl UU no 29/2007 ttg Jakarta sbg Ibukota NKRI,masih berlaku.Saat pidato 16/8,presiden Jokowi baru minta izin ke DPR&Rakyat, dan sampai skrg belum ada izin;belum ada UU ttg Ibukota yg baru itu.
+                     -hnurwahid</li>
+                  <li> 752 times: Amien Rais: "Pemindahan Ibu kota dari Jakarta ini bukan berdasarkan studi Bappenas, namun studi #China. Ini jelas sekali. Pemindahan ibukota ini lebih banyak mudaratnya."-MCAOps</li>
+                  <li>726 times: Tweep, jangan under estimate anak STM. Mereka punya agenda sendiri yg tidak harus sama dengan kakak-kakak Mahasiswa. Mereka menolak pemindahan Ibukota.
+                    ------
+                    "Apakah dengan pemindahan ibu kota negara ini akan maju?" kata pria itu dengan berapi-api.
+                    https://kumparan.com/@kumparannews/unjuk-rasa-di-dpr-anak-stm-orasi-mempersoalkan-pemindahan-ibu-kota-1rvsCDyjLm3Â â€¦ -NephiLaxmus</li>
+                  <li>324 times : Pemerintah akan mengeluarkan uang sangat banyak ribuan triliun bangun Ibukota baru yg sangat modern & nyaman buat pemerintahan di Kaltim dengan segala infrastruktur. 
+
+                    "Sementara dana stimulan untuk mengangkat ekonomi tidak ada lagi karena habis dipakai untuk Ibu kota baru" - Ronnie_Rusli</li>
+                  <li>41 times :Rencana Pemindahan Ibu Kota , Fahri : Rumah Korban Gempa NTB Juga Belum Selesai
+
+                    Saya tak bisa memahami jalan pikiran pemerintah , sudah begitu urgent kah ? Harus pindah ibukota ? Ses
+                    dangkan banyak kewajiban 2 yg belum tuntas . Dan duit juga minim 
+                     https://indonesiapress.net/rencana-pemindahan-ibu-kota-fahri-rumah-korban-gempa-ntb-juga-belum-selesai/Â â€¦ -yusufammar_w</li>
+                </ol>
+              </div>
+          </div>
+        </div>
+
+        <div id="Background" class="tab-pane fade">
+          <h2 id="title">Sebaran Lokasi Pengguna Twitter Berdasarkan Sentimen Terhadap Opini Pemindahan Ibukota
+            Republik Indonesia</h2>
+          <h3>Introduction</h3>
+          <p>Pemindahan lokasi ibukota Republik Indonesia menjadi isu terhangat saat ini, Upaya pemindahan ibu kota
+            Indonesia
+            dimulai pada tahun 2019 pada masa kepresidenan Joko Widodo, dalam keputusannya untuk memindahkan ibu kota
+            negara ke luar Pulau Jawa,
+            dimana sebelumnya lokasi ibukota semula berada Provinsi DKI Jakarta ke Penajam Pasar Utara,
+            Kutai Kartanegara Kalimantan Timur. Pemindahan ibu kota ini tertuang dalam Rencana Pembangunan Jangka
+            Menengah Nasional 2020-2024
+            Namun dari pernyataan dan keputusan pemerintah mengenai pemindahan lokasi ini terdapat pro dan kontra
+            dikalangan masyarakat indonesia,
+            terutama pengguna media sosial
+          </p>
+          <p>Pada penelitian ini mencoba mencari sebaran lokasi pengguna twitter terhadap pemindahan Ibukota Republik
+            Indonesia
+            dari pengguna twitter yang memberikan opini, serta melakukan klasifikasi sentimen menggunakan
+            SVM (Support Vector Machine) untuk mengklasifikasikan opini yang bersifat positif dan negatif, Sehingga
+            menjadi
+            informasi yang dapat membantu pemerintah untuk mengetahui opini masyarakat pengguna twitter serta
+            persebaran lokasi pengguna tersebut.
+            Selain itu penelitan ini dilakukan untuk mengetahui akurasi yang didapatkan nantinya efektif dengan
+            menggunakan metode SVM (Support Vector Machine).</p>
+        </div>
+
+        <div id="Methods" class="tab-pane fade">
+          <h4>Scrape twitter</h4>
+          <p>Tweet scraping using <a href="https://github.com/taspinar/twitterscraper">twitterscraper</a>,Keuntungan
+            twitterscraper dari menggunakan API twitter adalah memungkinkan untuk kembali melewati 7 hari. Namun metode
+            ini tidak memberikan informasi "permukaan bawah" dari pengguna seperti lokasi pengguna atau pengikut
+            seperti metode API.
+            <pre>
+        <code>
+          #Run in command line in batches and combine files afterwards
+          twitterscraper 'ibukota baru or pemindahan ibu kota' since : 2019-01-01 until : 2019-12-31 -o "ibukota_tweets.csv"
+        </code>
+      </pre>
+          </p>
+          <h4>Extract and plot geolocation</h4>
+          <pre>
+        <code>
+          <p class="comment"> Scrape user location menggunakan BeautifulSoup and Requests </p>
+          <a class="link" href="data/location.py">location.py</a>
+          <p class="comment"> Konversi location ke latitude dan longitude menggunakan geopy package </p>
+          <a class="link" href="data/geocoding.py">geocode.py</a>
+          <p class="comment"> Plot scatter points kedalam peta menggunakan folium package  </p>
+          <a class="link" href="cordinatlabel.py">cordinatlabel.py</a>
+        </code>
+      </pre>
+          <h4>Preprocessing</h4>
+          <pre>
+        <code>
+          <p class="comment">Tweet akan melalui proses preprocessing text yang berisi case folding,cleaning,tokenizing,stopword removal, dan stemming </p>
+          <a class="link" href="preprocessing.py">preprocessing.py</a>
+        </code>
+      </pre>
+          <h4>TF-IDF dan Klasifikasi SVM </h4>
+          <pre>
+        <code>
+          <p class="comment">pada bagian ini adalah melakukan pembobotan kata menggunakan TF-IDF dan juga melakukan klasifikasi menggunakan SVM</p>
+          <a class="link" href="tf_idf.py">tf_idf.py</a>
+        </code>
+      </pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    new Chart(document.getElementById("doughnut-chart"), {
+      type: 'doughnut',
+      data: {
+        labels: ["Positive", "Negative","Netral"],
+        datasets: [
+          {
+            label: "Population",
+            backgroundColor: ["#77dd77", "#ff6961","#828282"],
+            data: [215, 216, 50]
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Sentimen yang diberikan'
+        }
+      }
+    });
+
+    new Chart(document.getElementById("doughnut-chart-1"), {
+      type: 'doughnut',
+      data: {
+        labels: ["Aceh", "Jabodetabek", "Jawa Barat", "Jawa Tengah", "Jawa Timur", "Kalimantan Barat", "Kalimantan Selatan", "Kalimantan Tengah", "Kalimantan Timur", "Kalimantan Utara", "Kepulauan Riau", "Lampung", "Maluku Utara",
+          "Riau", "Sulawesi Selatan", "Sulawesi Tengah", "Sumatera Barat", "Sumatera Selatan", "Sumatera Utara", "Yogyakarta"],
+        datasets: [
+          {
+            label: "Population",
+            backgroundColor: ["#77dd77", "#ff6961", "#FFD700", "#FFA500", "#32CD32", "#00FF7F", "#00FA9A", "#8FBC8F", "#3CB371", "#808000",
+              "#00FFFF", "#7FFFD4", "#66CDAA", "#008B8B", "#4169E1", "#0000CD", "#EE82EE", "#BA55D3", "#9400D3", "#FF69B4"],
+            data: [4, 131, 15, 9, 5, 2, 1, 0, 5, 1, 1, 1, 0, 1, 5, 0, 2, 1, 1, 9]
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Sentimen negatif diberikan bedasarkan daerah'
+        }
+      }
+    });
+
+    new Chart(document.getElementById("doughnut-chart-2"), {
+      type: 'doughnut',
+      data: {
+        labels: ["Aceh", "Jabodetabek", "Jawa Barat", "Jawa Tengah", "Jawa Timur", "Kalimantan Barat", "Kalimantan Selatan", "Kalimantan Tengah", "Kalimantan Timur", "Kalimantan Utara", "Kepulauan Riau", "Lampung", "Maluku Utara",
+          "Riau", "Sulawesi Selatan", "Sulawesi Tengah", "Sumatera Barat", "Sumatera Selatan", "Sumatera Utara", "Yogyakarta"],
+        datasets: [
+          {
+            label: "Population",
+            backgroundColor: ["#77dd77", "#ff6961", "#FFD700", "#FFA500", "#32CD32", "#00FF7F", "#00FA9A", "#8FBC8F", "#3CB371", "#808000",
+              "#00FFFF", "#7FFFD4", "#66CDAA", "#008B8B", "#4169E1", "#0000CD", "#EE82EE", "#BA55D3", "#9400D3", "#FF69B4"],
+            data: [0, 89, 8, 5, 5, 0, 2, 5, 8, 0, 4, 2, 1, 3, 2, 1, 1, 1, 1, 5,]
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Sentimen positif diberikan bedasarkan daerah'
+        }
+      }
+    });
+
+  </script>
+</body>
+
+</html>
