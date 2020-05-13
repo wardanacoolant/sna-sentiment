@@ -31,15 +31,15 @@ import os
 import shutil
 
 
-app = Flask(__name__)
+projectSaya = Flask(__name__)
 
 
-@app.route('/')
+@projectSaya.route('/')
 def home():
     return render_template('index.html')
 
 
-@app.route('/predict', methods=['POST'])
+@projectSaya.route('/predict', methods=['POST'])
 def predict():
 
     df_pd = pd.read_csv("data/Pindah Ibukota_complete_processed_ready.csv",
@@ -90,7 +90,7 @@ def predict():
 
     return render_template('prediction.html',content=message,prediction=my_prediction,akurasi=akurasi)
 
-@app.route('/get_map')
+@projectSaya.route('/get_map')
 def get_map():
     r = int(random.triangular(0,100))
     t = "templates/map_{i}.html"
@@ -109,7 +109,7 @@ def get_map():
     r.cache_control.proxy_revalidate = True
     return r
 
-@app.route('/get_heat')
+@projectSaya.route('/get_heat')
 def get_heat():
     r = int(random.triangular(0,100))
     t = "templates/heatmap{i}.html"
@@ -128,7 +128,7 @@ def get_heat():
     r.cache_control.proxy_revalidate = True
     return r
 
-@app.route('/get_positive')
+@projectSaya.route('/get_positive')
 def get_positive():
     r = int(random.triangular(0,100))
     t = "templates/heatmap{i}.html"
@@ -147,7 +147,7 @@ def get_positive():
     r.cache_control.proxy_revalidate = True
     return r
 
-@app.route('/get_negative')
+@projectSaya.route('/get_negative')
 def get_negative():
     r = int(random.triangular(0,100))
     t = "templates/heatmap{i}.html"
@@ -166,7 +166,7 @@ def get_negative():
     r.cache_control.proxy_revalidate = True
     return r
 
-@app.route('/get_point')
+@projectSaya.route('/get_point')
 def get_point():
     r = int(random.triangular(0,100))
     t = "templates/point{i}.html"
@@ -186,4 +186,4 @@ def get_point():
     return r
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    projectSaya.run(debug=True)
