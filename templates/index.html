@@ -70,6 +70,9 @@
                 <div class="col-md-3" style="width: 400px;height: 400px">
                   <canvas id="doughnut-chart"></canvas>
                 </div>
+                <div class="col-md-3" style="width: 500px;height: 500px">
+                  <canvas id="doughnut-chart-3"></canvas>
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-6" style="width: 500px;height: 500px">
@@ -199,14 +202,15 @@
     new Chart(document.getElementById("doughnut-chart-1"), {
       type: 'doughnut',
       data: {
-        labels: ["Aceh", "Jabodetabek", "Jawa Barat", "Jawa Tengah", "Jawa Timur", "Kalimantan Barat", "Kalimantan Selatan", "Kalimantan Tengah", "Kalimantan Timur", "Kalimantan Utara", "Kepulauan Riau", "Lampung", "Maluku Utara",
-          "Riau", "Sulawesi Selatan", "Sulawesi Tengah", "Sumatera Barat", "Sumatera Selatan", "Sumatera Utara", "Yogyakarta"],
+        labels: ["DKI Jakarta",	"Jawa Barat",	"Kalimantan Timur", "DI Yogyakarta",	"Jawa Timur",	"Banten",	"Kalimantan Tengah",	
+        "Sulawesi Selatan", "Kepulauan Riau","Jawa Tengah","Aceh","Bali","Kalimantan Selatan","Lampung","Sumatera Barat","Sumatera Selatan","Sumatera Utara"
+],
         datasets: [
           {
             label: "Population",
             backgroundColor: ["#77dd77", "#ff6961", "#FFD700", "#FFA500", "#32CD32", "#00FF7F", "#00FA9A", "#8FBC8F", "#3CB371", "#808000",
               "#00FFFF", "#7FFFD4", "#66CDAA", "#008B8B", "#4169E1", "#0000CD", "#EE82EE", "#BA55D3", "#9400D3", "#FF69B4"],
-            data: [4, 131, 15, 9, 5, 2, 1, 0, 5, 1, 1, 1, 0, 1, 5, 0, 2, 1, 1, 9]
+            data: [110,31,17,9,8,6,6,6,5,4,3,3,3,2,1,1,1]
           }
         ]
       },
@@ -221,14 +225,16 @@
     new Chart(document.getElementById("doughnut-chart-2"), {
       type: 'doughnut',
       data: {
-        labels: ["Aceh", "Jabodetabek", "Jawa Barat", "Jawa Tengah", "Jawa Timur", "Kalimantan Barat", "Kalimantan Selatan", "Kalimantan Tengah", "Kalimantan Timur", "Kalimantan Utara", "Kepulauan Riau", "Lampung", "Maluku Utara",
-          "Riau", "Sulawesi Selatan", "Sulawesi Tengah", "Sumatera Barat", "Sumatera Selatan", "Sumatera Utara", "Yogyakarta"],
+        labels: ["DKI Jakarta","Jawa Barat","Kalimantan Timur","DI Yogyakarta","Jawa Timur","Jawa Tengah","Banten","Lampung","Kalimantan Barat",
+        	"Sulawesi Selatan","Sumatera Utara","Maluku Utara","Kalimantan Selatan","Sumatera Barat","Kalimantan Utara","Kalimantan Tengah","Kepulauan Riau","Aceh",	"Sumatera Selatan","Bangka Belitung"	
+																				
+                                        ],
         datasets: [
           {
             label: "Population",
             backgroundColor: ["#77dd77", "#ff6961", "#FFD700", "#FFA500", "#32CD32", "#00FF7F", "#00FA9A", "#8FBC8F", "#3CB371", "#808000",
               "#00FFFF", "#7FFFD4", "#66CDAA", "#008B8B", "#4169E1", "#0000CD", "#EE82EE", "#BA55D3", "#9400D3", "#FF69B4"],
-            data: [0, 89, 8, 5, 5, 0, 2, 5, 8, 0, 4, 2, 1, 3, 2, 1, 1, 1, 1, 5,]
+            data: [121,29,10,7,7,7,5,5,4,3,3,3,2,2,2,1,1,1,1,1]
           }
         ]
       },
@@ -236,6 +242,27 @@
         title: {
           display: true,
           text: 'Sentimen positif diberikan bedasarkan daerah'
+        }
+      }
+    });
+
+    new Chart(document.getElementById("doughnut-chart-3"), {
+      type: 'doughnut',
+      data: {
+        labels: ["DKI Jakarta","Jawa Barat","Kalimantan Timur","Jawa Tengah","Jawa Timur","Banten","Sulawesi Selatan","DI Yogyakarta","Sumatera Utara","Kepulauan Riau"],
+        datasets: [
+          {
+            label: "Population",
+            backgroundColor: ["#77dd77", "#ff6961", "#FFD700", "#FFA500", "#32CD32", "#00FF7F", "#00FA9A", "#8FBC8F", "#3CB371", "#808000",
+              "#00FFFF", "#7FFFD4", "#66CDAA", "#008B8B", "#4169E1", "#0000CD", "#EE82EE", "#BA55D3", "#9400D3", "#FF69B4"],
+            data: [25,7,4,4,3,2,2,1,1,1]
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Sentimen Netral diberikan bedasarkan daerah'
         }
       }
     });
